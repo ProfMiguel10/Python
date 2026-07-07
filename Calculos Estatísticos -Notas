@@ -1,0 +1,63 @@
+# Importa o módulo statistics, que possui funções estatísticas prontas
+import statistics
+
+# Cria uma lista com as notas dos alunos
+notas = [8.5, 7.0, 9.2, 6.5, 5.8, 10.0, 7.8, 8.9, 6.7, 9.5]
+
+# Exibe o conjunto de dados
+print("Notas da turma:")
+print(notas)
+
+# Calcula a quantidade de notas existentes
+quantidade = len(notas)
+
+# Calcula a média das notas
+media = statistics.mean(notas)
+
+# Calcula a mediana das notas
+mediana = statistics.median(notas)
+
+# Calcula a maior nota
+maior = max(notas)
+
+# Calcula a menor nota
+menor = min(notas)
+
+# Exibe a quantidade de registros
+print("\nQuantidade de alunos:", quantidade)
+
+# Exibe a média da turma
+print("Média:", round(media, 2))
+
+# Exibe a mediana
+print("Mediana:", mediana)
+
+# Exibe a maior nota
+print("Maior nota:", maior)
+
+# Exibe a menor nota
+print("Menor nota:", menor)
+
+# Inicializa um contador para alunos aprovados
+aprovados = 0
+
+# Percorre todas as notas da lista
+for nota in notas:
+
+    # Verifica se a nota é maior ou igual a 7
+    if nota >= 7:
+
+        # Incrementa o contador de aprovados
+        aprovados += 1
+
+# Calcula a quantidade de reprovados
+reprovados = quantidade - aprovados
+
+# Calcula o percentual de aprovação
+percentual = (aprovados / quantidade) * 100
+
+# Exibe os resultados
+print("\nResumo da turma")
+print("Aprovados:", aprovados)
+print("Reprovados:", reprovados)
+print("Percentual de aprovação:", round(percentual, 2), "%")
