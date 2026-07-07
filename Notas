@@ -1,0 +1,24 @@
+alunos = []
+
+while True:
+    nome = input("Nome do aluno (ou 'fim' para encerrar): ")
+
+    if nome.lower() == "fim":
+        break
+
+    nota = float(input("Nota: "))
+
+    alunos.append({
+        "nome": nome,
+        "nota": nota
+    })
+
+print("\n=== Relatório ===")
+
+for aluno in alunos:
+    if aluno["nota"] >= 7:
+        situacao = "Aprovado"
+    else:
+        situacao = "Reprovado"
+
+    print(f"{aluno['nome']} - Nota: {aluno['nota']} - {situacao}")
