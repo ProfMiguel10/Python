@@ -1,0 +1,69 @@
+# Cria uma variável chamada saldo e inicia com R$ 1000
+saldo = 1000
+
+# Inicia um laço infinito para manter o sistema em execução
+while True:
+
+    # Exibe o menu de opções
+    print("\n===== CAIXA ELETRÔNICO =====")
+    print("1 - Consultar saldo")
+    print("2 - Depositar")
+    print("3 - Sacar")
+    print("4 - Sair")
+
+    # Solicita ao usuário que escolha uma opção
+    opcao = input("Escolha uma opção: ")
+
+    # Verifica se o usuário escolheu consultar saldo
+    if opcao == "1":
+
+        # Mostra o saldo com duas casas decimais
+        print(f"Seu saldo é R$ {saldo:.2f}")
+
+    # Verifica se o usuário escolheu depositar
+    elif opcao == "2":
+
+        # Solicita o valor do depósito
+        valor = float(input("Digite o valor do depósito: "))
+
+        # Soma o valor ao saldo atual
+        saldo = saldo + valor
+
+        # Informa que o depósito foi realizado
+        print("Depósito realizado com sucesso!")
+
+    # Verifica se o usuário escolheu sacar
+    elif opcao == "3":
+
+        # Solicita o valor do saque
+        valor = float(input("Digite o valor do saque: "))
+
+        # Verifica se há saldo suficiente
+        if valor <= saldo:
+
+            # Subtrai o valor do saldo
+            saldo = saldo - valor
+
+            # Informa que o saque foi realizado
+            print("Saque realizado com sucesso!")
+
+        # Caso não exista saldo suficiente
+        else:
+
+            # Exibe mensagem de erro
+            print("Saldo insuficiente!")
+
+    # Verifica se o usuário deseja sair
+    elif opcao == "4":
+
+        # Exibe mensagem de despedida
+        print("Obrigado por utilizar o sistema!")
+
+        # Encerra o laço
+        break
+
+    # Caso a opção digitada não exista
+    else:
+
+        # Informa que a opção é inválida
+        print("Opção inválida. Tente novamente.")
