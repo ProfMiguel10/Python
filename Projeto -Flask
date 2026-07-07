@@ -1,0 +1,72 @@
+#Projeto Flask para Rodar no Colab
+!pip install flask requests
+
+from flask import Flask, jsonify, request
+import threading
+
+# Cria a aplicação Flask
+app = Flask(__name__)
+
+# Lista de canais (simulando um banco de dados)
+canais = [
+    {"id": 1, "nome": "Tecnologia, Direito e Inovação"},
+    {"id": 2, "nome": "Canal 2"},
+    {"id": 3, "nome": "Canal 3"}
+]
+
+# Página inicial
+@app.route("/")
+def inicio():
+    return jsonify({"mensagem": "Bem-vindo à API de Canais do YouTube!"})
+
+# Listar todos os canais
+@app.route("/canais", methods=["GET"])
+def listar_canais():
+    return jsonify(canais)
+
+# Cadastrar um novo canal
+@app.route("/canais", methods=["POST"])
+def cadastrar_canal():
+    novo_canal = request.get_json()
+    canais.append(novo_canal)
+
+    return jsonify({
+        "mensagem": "Canal cadastrado com sucesso!",
+        "canal": novo_canal
+    })
+
+-----------
+
+def iniciar():
+    app.run(host="127.0.0.1", port=8085)
+
+thread = threading.Thread(target=iniciar)
+thread.daemon = True
+thread.start()
+
+----------
+
+import requests
+
+resposta = requests.get("http://127.0.0.1:8085/")
+
+print(resposta.json())
+
+-------
+novo = {
+    "id": 4,
+    "nome": "Canal 4"
+}
+
+resposta = requests.post(
+    "http://127.0.0.1:8085/canais",
+    json=novo
+)
+
+print(resposta.json())
+
+------
+
+resposta = requests.get("http://127.0.0.1:8085/canais")
+
+print(resposta.json())
